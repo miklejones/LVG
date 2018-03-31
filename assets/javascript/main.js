@@ -7,11 +7,12 @@ $("button").on("click", function() {
     var queryURL = "https://api.yelp.com/v3/businesses/search";
 
     // yelp api key
-     queryURL += "sBLewF9JJvwNNvQR-3G6jn6R2OSVBAFU_ngzjtX0aPTQlvnKJRCGktgIjcN8F8ZCwLUlp2Zh3zJpa7WnYx=10";
+    queryURL += "sBLewF9JJvwNNvQR-3G6jn6R2OSVBAFU_ngzjtX0aPTQlvnKJRCGktgIjcN8F8ZCwLUlp2Zh3zJpa7WnYx=10";
 
 
     // Performing an AJAX request with the queryURL
     $.ajax({
         url: queryURL,
         method: "GET"
-    });
+    })
+});
