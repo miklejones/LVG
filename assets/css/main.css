@@ -1,0 +1,27 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+div {
+    background-color: black;
+    color: white;
+}
+
+#black-head {
+    background-color: black;
+    color: white;
+    letter-spacing: 3px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+}
+
+.search .glyphicon-search { 
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+.btn-default {
+    background-color: green;
+}
