@@ -1,18 +1,18 @@
 body {
-    background-color: black;
+    background-color: #3533A0;
     color: white;
+    font-family: 'Quicksand', sans-serif;
 }
 
 div {
-    background-color: black;
+    background-color: #3533A0;
     color: white;
 }
 
 #black-head {
-    background-color: black;
+    background-color: #3533A0;
     color: white;
     letter-spacing: 3px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 700;
 }
 
