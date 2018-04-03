@@ -6,7 +6,8 @@ $("#run-search").on("click", function(event) {
     // Here, it prevents the submit button from trying to submit a form when clicked
     event.preventDefault();
 
-
+    // geolocation
+    var queryURL1 = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDHegTvoYcDXW5dGr4-Nlq2Ocuhq733V_I";
     // queryURL is the url we'll use to query the API
     var queryURL = "https://api.yelp.com/v3/businesses/search";
     // Here we grab the text from the input box
