@@ -1,7 +1,11 @@
+
 // Adding click event listen listener to all buttons
-$("button").on("click", function() {
-    // Grabbing and storing the data-animal property value from the button
-    var nightLife = $(this).attr("data-places");
+$("#run-search").on("click", function(event) {
+
+    // event.preventDefault() can be used to prevent an event's default behavior.
+    // Here, it prevents the submit button from trying to submit a form when clicked
+    event.preventDefault();
+
 
     // queryURL is the url we'll use to query the API
     var queryURL = "https://api.yelp.com/v3/businesses/search";
@@ -17,5 +21,11 @@ $("button").on("click", function() {
     $.ajax({
         url: queryURL,
         method: "GET"
+    }).then(function(response) {
+        $("#well-section").text(JSON.stringify(response));
+
+        var results = response.data;
+        console.log(results);
     })
+
 });
