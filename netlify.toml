@@ -1,0 +1,8 @@
+## COMMENT: This rule redirects to an external api
+[[redirects]]
+  from = "/api/yelp/*"
+  to = "https://api.yelp.com/:splat"
+  status = 200
+  force = true
+  headers = {Authorization = "sBLewF9JJvwNNvQR-3G6jn6R2OSVBAFU_ngzjtX0aPTQlvnKJRCGktgIjcN8F8ZCwLUlp2Zh3zJpa7WnYx"} # COMMENT: add this header to the search request
+  
