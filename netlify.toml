@@ -4,5 +4,5 @@
   to = "https://api.yelp.com/:splat"
   status = 200
   force = true
-  headers = {Authorization = "Bearer sBLewF9JJvwNNvQR-3G6jn6R2OSVBAFU_ngzjtX0aPTQlvnKJRCGktgIjcN8F8ZCwLUlp2Zh3zJpa7WnYx"} # COMMENT: add this header to the search request
+  headers = {Authorization = "Bearer sBLewF9JJvwNNvQR-3G6jn6R2OSVBAFU_ngzjtX0aPTQlvnKJRCGktgIjcN8F8ZCwLUlp2Zh3zJpa7WnYx", "Access-Control-Allow-Origin" = *} # COMMENT: add this header to the search request
   
