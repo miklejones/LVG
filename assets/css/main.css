@@ -2,6 +2,7 @@ body {
     background-color: #3533A0;
     color: white;
     font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
 }
 
 div {
@@ -13,7 +14,6 @@ div {
     background-color: #3533A0;
     color: white;
     letter-spacing: 3px;
-    font-weight: 700;
 }
 
 .search .glyphicon-search { 
@@ -54,5 +54,5 @@ div {
 .white-bg {
     border-radius: 20px;
     background-color: rgb(221, 221, 221);
-    height: 200px;
+    height: 300px;
 }

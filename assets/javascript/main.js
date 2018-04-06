@@ -1,32 +1,67 @@
+var map;
+var service;
+var infowindow;
+var pyrmont;
+var lat = 0;
+var long = 0;
 
-// Adding click event listen listener to all buttons
-$("#run-search").on("click", function(event) {
+function initialize(lat, long) {
+    pyrmont = new google.maps.LatLng(lat, long);
 
-    // event.preventDefault() can be used to prevent an event's default behavior.
-    // Here, it prevents the submit button from trying to submit a form when clicked
-    event.preventDefault();
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: pyrmont,
+        zoom: 15
+    });
 
-    // geolocation
-    var queryURL1 = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDHegTvoYcDXW5dGr4-Nlq2Ocuhq733V_I";
-    // queryURL is the url we'll use to query the API
-    var queryURL = "https://api.yelp.com/v3/businesses/search";
-    // Here we grab the text from the input box
-    var city = $("#city-input").val();
+}
 
-    // yelp api key
-    queryURL += "sBLewF9JJvwNNvQR-3G6jn6R2OSVBAFU_ngzjtX0aPTQlvnKJRCGktgIjcN8F8ZCwLUlp2Zh3zJpa7WnYx=10";
-    // open weather key
-    queryURLweather +="https://api.openweathermap.org/data/2.5/weather?q" + city + "&appid=0376d3f7071bd7a61aec6379bed27dbc";
+function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+            var place = results[i];
+            console.log(place);
+        }
+    }
+}
 
-    // Performing an AJAX request with the queryURL
+function onPositionReceived(position) {
+    console.log(position);
+
+    lat = position.coords.latitude;
+    long = position.coords.longitude;
+    console.log(lat);
+    console.log(long);
+    
     $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response) {
-        $("#well-section").text(JSON.stringify(response));
-
-        var results = response.data;
-        console.log(results);
+        method: 'GET',
+        url:  src=`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyAS6rcW7TumaYUczp3JckeTH46aA7D2WyU`
+    }).then(function(res){
+        var zip = res.results[0].address_components[7].short_name;
+        $(".location").text(zip);
     })
+    
 
+    initialize(position.coords.latitude, position.coords.longitude);
+
+    var request = {
+        location: pyrmont,
+        radius: '500',
+        type: ['restaurant']
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
+}
+
+function locationNotReceived(positionError) {
+    console.log(positionError);
+}
+
+$(document).ready(function () {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(onPositionReceived, locationNotReceived);
+    }
 });
+
+
+
