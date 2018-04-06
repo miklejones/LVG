@@ -42,8 +42,11 @@ function onPositionReceived(position) {
         url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyAS6rcW7TumaYUczp3JckeTH46aA7D2WyU`
     }).then(function (res) {
         console.log(res);
+
+        //make the address components more manageable to manipulate
         let addComp = res.results[0].address_components;
 
+        //run throught the components looking for postal code and then pulling the short_name
         for (let i = 0; i < addComp.length; i++) {
             if (addComp[i]['types'] == 'postal_code') {
                 let zipObj = addComp[i];
@@ -65,15 +68,41 @@ function onPositionReceived(position) {
 
     initialize(position.coords.latitude, position.coords.longitude);
 
+    // var restRequest = {
+    //     location: pyrmont,
+    //     radius: '500',
+    //     type: ['restaurant']
+    // };
+
+    // var shopRequest = {
+    //     location: pyrmont,
+    //     radius: '500',
+    //     type: ['restaurant']
+    // };
+
+
+
+    //call restaurants
     var request = {
         location: pyrmont,
-        radius: '500',
-        type: ['restaurant']
+        radius: '1000',
+        type: ['bar']
     };
+
 
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
+
 }
+
+
+
+
+
+
+
+
+
 
 function locationNotReceived(positionError) {
     console.log(positionError);

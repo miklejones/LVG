@@ -1,0 +1,58 @@
+body {
+    background-color: #3533A0;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+
+#map {
+    background-color: white;
+}
+
+#black-head {
+    background-color: #3533A0;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.search .glyphicon-search { 
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.vanessa {
+    background-color: #3533A0;
+    color: white;
+}
+
+.jumbotron {
+    padding: 10px;
+}
+
+.round-btn {
+    border-radius: 40px;
+    /* padding-left: 20px;
+      padding-right: 20px; */
+    font-weight: 600;
+}
+
+.btn {
+    color: #3533A0;
+}
+
+.btn:hover {
+    background-color: tomato;
+    color: white;
+}
+
+.lvg-logo {
+    max-width: 300px;
+}
+
+.white-bg {
+    border-radius: 20px;
+    background-color: rgb(221, 221, 221);
+    height: 300px;
+}
