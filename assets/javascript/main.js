@@ -2,6 +2,8 @@ var map;
 var service;
 var infowindow;
 var pyrmont;
+var lat = 0;
+var long = 0;
 
 function initialize(lat, long) {
     pyrmont = new google.maps.LatLng(lat, long);
@@ -24,6 +26,20 @@ function callback(results, status) {
 
 function onPositionReceived(position) {
     console.log(position);
+
+    lat = position.coords.latitude;
+    long = position.coords.longitude;
+    console.log(lat);
+    console.log(long);
+    
+    $.ajax({
+        method: 'GET',
+        url:  src=`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyAS6rcW7TumaYUczp3JckeTH46aA7D2WyU`
+    }).then(function(res){
+        var zip = res.results[0].address_components[7].short_name;
+        $(".location").text(zip);
+    })
+    
 
     initialize(position.coords.latitude, position.coords.longitude);
 
