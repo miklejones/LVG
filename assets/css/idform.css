@@ -10,7 +10,6 @@ body {
 #idForm {
     background-color: rgb(221, 221, 221);
     border-radius: 25px;
-    width: 800px;
     height: 250px;
     /* margin: auto; */
     padding: 20px;
@@ -68,7 +67,7 @@ body {
     position: absolute;
     width: 70px;
     height: auto;
-    left: 400px;
+    left: 600px;
     top: 60px;
     z-index: 1;
 

@@ -1,7 +1,6 @@
 function getAge() {
     var dateString = document.getElementById("date").value;
-    if(dateString !="")
-    {
+    if (dateString != "") {
         var today = new Date();
         var birthDate = new Date(dateString);
         var age = today.getFullYear() - birthDate.getFullYear();
@@ -10,20 +9,19 @@ function getAge() {
         if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
             age--;
         }
-        if(m<0){
-            m +=12;
+        if (m < 0) {
+            m += 12;
         }
-        if(da<0){
-            da +=30;
+        if (da < 0) {
+            da += 30;
         }
 
-        if(age < 18 || age > 100)
-        {
-            alert("Age "+age+" is restrict");
+        if (age < 18 || age > 100) {
+            alert("Age " + age + " is restrict");
 
         } else {
 
-            alert("Age "+age+" is allowed");
+            alert("Age " + age + " is allowed");
         }
     } else {
         alert("please provide your date of birth");
@@ -34,6 +32,11 @@ function getAge() {
 // btn.on('click', function() {
 //    console.log(btn)
 //   });
-$(".btn").on("click",function(){
-    window.location.href='sexy.html';
+$(".btn").on("click", function () {
+    var age = $('#age-input').val();
+    if (age >= 21) {
+        window.location.href = 'sexy.html';
+    } else {
+        window.location.href = 'index.html';
+    }
 });
