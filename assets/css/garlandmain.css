@@ -49,10 +49,16 @@ body {
 
 .lvg-logo {
     max-width: 300px;
+    margin: 20px;
+    width: 200px;
 }
 
 .white-bg {
     border-radius: 20px;
     background-color: rgb(221, 221, 221);
     height: 300px;
+}
+
+#div-window {
+    color: black;
 }

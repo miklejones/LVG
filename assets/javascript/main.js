@@ -35,10 +35,17 @@ function onPositionReceived(position) {
     
     $.ajax({
         method: 'GET',
+<<<<<<< HEAD
         url:`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyAS6rcW7TumaYUczp3JckeTH46aA7D2WyU`
     }).then(function(res){
         var zip = res.results[0].address_components[8].short_name;
         console.log(zip)
+=======
+        url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyAS6rcW7TumaYUczp3JckeTH46aA7D2WyU`
+    }).then(function(res){
+        console.log(res);
+        var zip = res.results[0].address_components[7].short_name;
+>>>>>>> 7ed585f0ee35abcb2b67f2fc454514b77e054f55
         $(".location").text(zip);
     });
     
