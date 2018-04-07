@@ -52,7 +52,7 @@ function onPositionReceived(position) {
                 let zipObj = addComp[i];
                 let zip = zipObj.short_name;
                 console.log(zip);
-                $(".location").text(zip);
+                $(".location").text("the " + zip);
             }
         }
         console.log(funList);   
@@ -64,7 +64,7 @@ function onPositionReceived(position) {
 
     var request = {
         location: pyrmont,
-        radius: '1000',
+        radius: '500',
         type: ['bar']
     };
 
@@ -73,17 +73,13 @@ function onPositionReceived(position) {
 
     var request = {
         location: pyrmont,
-        radius: '1000',
+        radius: '500',
         type: ['restaurant']
     };
 
     service.nearbySearch(request, callback);
 
-    var request = {
-        location: pyrmont,
-        radius: '1000',
-        type: ['shopping_mall']
-    };
+
 
     service.nearbySearch(request, callback);
 
@@ -108,7 +104,7 @@ function createMarker(place) {
     var infowindow = new google.maps.InfoWindow();
 
     google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent('<div id="info-window"><strong>' + place.name + '</strong><br>' +
+        infowindow.setContent('<div id="info-window" style="color: black"><strong>' + place.name + '</strong><br>' +
           'Address: ' + place.vicinity + '</div>');
         infowindow.open(map, this);
       });
@@ -127,7 +123,9 @@ $(document).ready(function () {
 
 });
 
-
+$("#sexy-btn").on('click', function() {
+    window.location.href="index.html"
+})
 
 
 
