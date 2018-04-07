@@ -4,7 +4,7 @@ LVG - 	Vanessa Borras-Patino
 	Micheal Garland
 	Leo Orellana
 	
-https://github.com/miklejones/LVG
+https://miklejones.github.io/LVG/
 
 Project Description- Develop an application suggesting fun things to do. 
 
