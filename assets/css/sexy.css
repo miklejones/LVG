@@ -12,6 +12,9 @@ body {
     /*color: white;*/
     letter-spacing: 3px;
 }
+ #make-it {
+    color: white;
+ }
 
 .search .glyphicon-search {
     position: absolute;
@@ -46,6 +49,8 @@ body {
 
 .lvg-logo {
     max-width: 300px;
+    margin: 20px;
+    width: 200px;
 }
 
 .white-bg {

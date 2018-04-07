@@ -35,5 +35,5 @@ function getAge() {
 //    console.log(btn)
 //   });
 $(".btn").on("click",function(){
-    window.location.href='index.html';
+    window.location.href='sexy.html';
 });

@@ -5,6 +5,8 @@ var pyrmont;
 var lat = 0;
 var long = 0;
 
+
+
 function initialize(lat, long) {
     pyrmont = new google.maps.LatLng(lat, long);
 
@@ -19,7 +21,9 @@ function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
             var place = results[i];
+            createMarker(place);
             console.log(place);
+
         }
     }
 }
@@ -31,10 +35,6 @@ function onPositionReceived(position) {
     long = position.coords.longitude;
     console.log(lat);
     console.log(long);
-
-
-
-
 
 
     $.ajax({
@@ -52,54 +52,62 @@ function onPositionReceived(position) {
                 let zipObj = addComp[i];
                 let zip = zipObj.short_name;
                 console.log(zip);
-                $(".location").text(zip);
+                $(".location").text('the ' + zip);
             }
 
         }
 
 
-
-
-        //run through
-        // var zip = res.results[0].address_components[7].short_name;
-        // $(".location").text(zip);
     });
-
 
     initialize(position.coords.latitude, position.coords.longitude);
 
-    // var restRequest = {
-    //     location: pyrmont,
-    //     radius: '500',
-    //     type: ['restaurant']
-    // };
-
-    // var shopRequest = {
-    //     location: pyrmont,
-    //     radius: '500',
-    //     type: ['restaurant']
-    // };
-
-
-
-    //call restaurants
     var request = {
         location: pyrmont,
         radius: '500',
-        type: ['restaurants']
+        type: ['lodging']
     };
-
 
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
 
+    var request = {
+        location: pyrmont,
+        radius: '500',
+        type: ['night_club']
+    };
+
+    service.nearbySearch(request, callback);
+
+    var request = {
+        location: pyrmont,
+        radius: '500',
+        type: ['bar']
+    };
+
+    service.nearbySearch(request, callback);
+
 }
 
+function createMarker(place) {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });
 
-var googlePlaces = $("<div>");
-googlePlaces.text(response.whatever-you-want-from-the-response);
-$("#your-container-div-id").append(googlePlaces);
+    // google.maps.event.addListener(marker, 'click', function () {
+    //     infowindow.setContent(place.name);
+    //     infowindow.open(map, this);
+    // });
+    var infowindow = new google.maps.InfoWindow();
 
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent('<div id="info-window" style="color: black"><strong>' + place.name + '</strong><br>' +
+            'Address: ' + place.vicinity + '</div>');
+        infowindow.open(map, this);
+    });
+}
 
 
 function locationNotReceived(positionError) {
@@ -112,5 +120,9 @@ $(document).ready(function () {
     }
 });
 
+
+$("#sexy-btn").on('click', function () {
+    window.location.href = "index.html"
+});
 
 

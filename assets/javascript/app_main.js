@@ -23,7 +23,7 @@ function callback(results, status) {
             var place = results[i];
             funList.push(place);
             createMarker(place);
-            // console.log(place);
+            console.log(place);
         }
     }
 }
@@ -55,8 +55,8 @@ function onPositionReceived(position) {
                 $(".location").text("the " + zip);
             }
         }
-        console.log(funList);   
-        
+        console.log(funList);
+
 
     });
 
@@ -65,7 +65,7 @@ function onPositionReceived(position) {
     var request = {
         location: pyrmont,
         radius: '500',
-        type: ['bar']
+        type: ['shopping_mall']
     };
 
     service = new google.maps.places.PlacesService(map);
@@ -78,17 +78,8 @@ function onPositionReceived(position) {
     };
 
     service.nearbySearch(request, callback);
-
-
-
-    service.nearbySearch(request, callback);
-
     //code that will pick three random options and push them to the DOM
-    
-   
-
 }
-
 
 function createMarker(place) {
     var placeLoc = place.geometry.location;
@@ -103,11 +94,11 @@ function createMarker(place) {
     // });
     var infowindow = new google.maps.InfoWindow();
 
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker, 'click', function () {
         infowindow.setContent('<div id="info-window" style="color: black"><strong>' + place.name + '</strong><br>' +
-          'Address: ' + place.vicinity + '</div>');
+            'Address: ' + place.vicinity + '</div>');
         infowindow.open(map, this);
-      });
+    });
 }
 
 
@@ -123,8 +114,8 @@ $(document).ready(function () {
 
 });
 
-$("#sexy-btn").on('click', function() {
-    window.location.href="index.html"
+$("#sexy-btn").on('click', function () {
+    window.location.href = "idform.html"
 })
 
 
