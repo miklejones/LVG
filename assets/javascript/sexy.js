@@ -60,7 +60,7 @@ function onPositionReceived(position) {
 
 
 
-        //run through 
+        //run through
         // var zip = res.results[0].address_components[7].short_name;
         // $(".location").text(zip);
     });
