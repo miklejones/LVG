@@ -106,3 +106,8 @@ $(document).ready(function () {
         navigator.geolocation.getCurrentPosition(onPositionReceived, locationNotReceived);
     }
 });
+
+$(".btn").on("click",function(){
+    window.location.href='index.html';
+});
+
