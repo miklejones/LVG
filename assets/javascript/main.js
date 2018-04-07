@@ -34,8 +34,9 @@ function onPositionReceived(position) {
     
     $.ajax({
         method: 'GET',
-        url:  src=`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyAS6rcW7TumaYUczp3JckeTH46aA7D2WyU`
+        url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyAS6rcW7TumaYUczp3JckeTH46aA7D2WyU`
     }).then(function(res){
+        console.log(res);
         var zip = res.results[0].address_components[7].short_name;
         $(".location").text(zip);
     })
