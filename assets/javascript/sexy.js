@@ -64,7 +64,7 @@ function onPositionReceived(position) {
 
     var request = {
         location: pyrmont,
-        radius: '500',
+        radius: '1000',
         type: ['lodging']
     };
 
