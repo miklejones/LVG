@@ -4,6 +4,8 @@ var infowindow;
 var pyrmont;
 var lat = 0;
 var long = 0;
+var tempType = '';
+var funList = [];
 
 function initialize(lat, long) {
     pyrmont = new google.maps.LatLng(lat, long);
@@ -16,9 +18,11 @@ function initialize(lat, long) {
 }
 
 function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
             var place = results[i];
+            funList.push(place);
+            createMarker(place);
             console.log(place);
         }
     }
@@ -33,37 +37,39 @@ function onPositionReceived(position) {
     console.log(long);
 
 
-
-
-
-
     $.ajax({
         method: 'GET',
         url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyAS6rcW7TumaYUczp3JckeTH46aA7D2WyU`
     }).then(function (res) {
         console.log(res);
+
+        //make the address components more manageable to manipulate
         let addComp = res.results[0].address_components;
 
+        //run throught the components looking for postal code and then pulling the short_name
         for (let i = 0; i < addComp.length; i++) {
             if (addComp[i]['types'] == 'postal_code') {
                 let zipObj = addComp[i];
                 let zip = zipObj.short_name;
                 console.log(zip);
-                $(".location").text(zip);
+                $(".location").text("the " + zip);
             }
-
         }
+        console.log(funList);
 
 
-
-
-        //run through 
-        // var zip = res.results[0].address_components[7].short_name;
-        // $(".location").text(zip);
     });
 
-
     initialize(position.coords.latitude, position.coords.longitude);
+
+    var request = {
+        location: pyrmont,
+        radius: '500',
+        type: ['shopping_mall']
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
 
     var request = {
         location: pyrmont,
@@ -71,9 +77,31 @@ function onPositionReceived(position) {
         type: ['restaurant']
     };
 
-    service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
+    //code that will pick three random options and push them to the DOM
 }
+
+function createMarker(place) {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });
+
+    // google.maps.event.addListener(marker, 'click', function () {
+    //     infowindow.setContent(place.name);
+    //     infowindow.open(map, this);
+    // });
+    var infowindow = new google.maps.InfoWindow();
+
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent('<div id="info-window" style="color: black"><strong>' + place.name + '</strong><br>' +
+            'Address: ' + place.vicinity + '</div>');
+        infowindow.open(map, this);
+    });
+}
+
+
 
 function locationNotReceived(positionError) {
     console.log(positionError);
@@ -83,7 +111,12 @@ $(document).ready(function () {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(onPositionReceived, locationNotReceived);
     }
+
 });
+
+$("#sexy-btn").on('click', function () {
+    window.location.href = "idform.html"
+})
 
 
 

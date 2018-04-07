@@ -1,8 +1,5 @@
 body {
-    background-color: #3533A0;
-    color: white;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
+    background-image: url("../images/sexy_bg.png");
 }
 
 
@@ -11,21 +8,24 @@ body {
 }
 
 #black-head {
-    background-color: #3533A0;
-    color: white;
+    /*background-color: #3533A0;*/
+    /*color: white;*/
     letter-spacing: 3px;
 }
+ #make-it {
+    color: white;
+ }
 
-.search .glyphicon-search { 
+.search .glyphicon-search {
     position: absolute;
     top: 10px;
     left: 10px;
 }
 
-.vanessa {
-    background-color: #3533A0;
-    color: white;
-}
+/*.vanessa {*/
+    /*background-color: #3533A0;*/
+    /*color: white;*/
+/*}*/
 
 .jumbotron {
     padding: 10px;
@@ -38,9 +38,9 @@ body {
     font-weight: 600;
 }
 
-.btn {
-    color: #3533A0;
-}
+/*.btn {*/
+    /*color: #3533A0;*/
+/*}*/
 
 .btn:hover {
     background-color: tomato;
@@ -57,8 +57,4 @@ body {
     border-radius: 20px;
     background-color: rgb(221, 221, 221);
     height: 300px;
-}
-
-#div-window {
-    color: black;
 }
