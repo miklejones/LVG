@@ -15,6 +15,9 @@ Api to use;
 	Yelp
 	Maps
 	Twitter
+	
+Actual APIs used;
+Google-geolocationa and Googel places  api
 
 Information for input;
 	Number of people
