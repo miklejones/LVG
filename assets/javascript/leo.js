@@ -60,7 +60,7 @@ function onPositionReceived(position) {
 
 
 
-        //run through 
+        //run through
         // var zip = res.results[0].address_components[7].short_name;
         // $(".location").text(zip);
     });
@@ -68,21 +68,21 @@ function onPositionReceived(position) {
 
     initialize(position.coords.latitude, position.coords.longitude);
 
-    // var restRequest = {
-    //     location: pyrmont,
-    //     radius: '500',
-    //     type: ['restaurant']
-    // };
-
-    // var shopRequest = {
-    //     location: pyrmont,
-    //     radius: '500',
-    //     type: ['restaurant']
-    // };
-
-
-
+    var restRequest = {
+        location: pyrmont,
+        radius: '500',
+        type: ['restaurant']
+    };
     //call restaurants
+    var shopRequest = {
+        location: pyrmont,
+        radius: '500',
+        type: ['restaurant']
+    };
+
+
+
+    //call bars
     var request = {
         location: pyrmont,
         radius: '500',
@@ -106,5 +106,7 @@ $(document).ready(function () {
     }
 });
 
-
+$(".btn").on("click",function(){
+    window.location.href='index.html';
+});
 

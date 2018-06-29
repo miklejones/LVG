@@ -5,9 +5,9 @@ body {
     font-weight: 700;
 }
 
-
-#map {
-    background-color: white;
+div {
+    background-color: #3533A0;
+    color: white;
 }
 
 #black-head {
@@ -49,16 +49,10 @@ body {
 
 .lvg-logo {
     max-width: 300px;
-    margin: 20px;
-    width: 200px;
 }
 
 .white-bg {
     border-radius: 20px;
     background-color: rgb(221, 221, 221);
     height: 300px;
-}
-
-#div-window {
-    color: black;
 }
