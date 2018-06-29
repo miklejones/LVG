@@ -85,22 +85,14 @@ function onPositionReceived(position) {
     //call restaurants
     var request = {
         location: pyrmont,
-        radius: '1000',
+        radius: '500',
         type: ['bar']
     };
-
 
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
 
 }
-
-
-
-
-
-
-
 
 
 
